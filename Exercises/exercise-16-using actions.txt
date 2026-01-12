@@ -1,0 +1,16 @@
+## We will use prebuild GitHub action. The actions are available at github.com under actions repository. ## @"https://github.com/actions/checkout"
+
+1. create a new workflow file under ./github/workflows as action-workflow.yml
+
+name: Checkout Demo
+on: 
+  push
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ls -la
+
+2. Save the file, commit the changes to the local repository and push the changes to the remote repository on GitHub.
+3. observe the automated workflow execution.

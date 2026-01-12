@@ -1,0 +1,28 @@
+# Exercise 01 – Hello World Workflow
+
+## Objective
+Understand the basic structure of a GitHub Actions workflow.
+
+1) create file workflow.yml
+
+name: Hello World
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print message
+        run: echo "Hello GitHub Actions!"
+
+
+## Steps
+1. Push this workflow to GitHub.
+2. Observe the run in the Actions tab.
+3. Review logs.
+
+## Expected Outcome
+Workflow runs successfully and prints a message.

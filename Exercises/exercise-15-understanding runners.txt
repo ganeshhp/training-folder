@@ -1,0 +1,23 @@
+## Objective
+## We will understand what are runners and how we can run jobs on multiple operating systems.
+use below code as workflow. 
+## Create a workflow file inside './github/workflows' folder in the project repository.
+
+name: Runner Comparison
+on: [workflow_dispatch]
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - run: uname -a
+  windows:
+    runs-on: windows-latest
+    steps:
+      - run: systeminfo
+  mac:
+    runs-on: macos-latest
+    steps:
+      - run: sw_vers
+
+## save the file and commit the changes to the local repository. Push the changes to the GitHub repository.
+## note automated workflow run and check the logs.

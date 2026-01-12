@@ -1,0 +1,51 @@
+## write a workflow to build, test and deploy a Java project
+
+1) open the file javaproject-workflow.yml under .github/workflows folder.
+2) Update the existing code with lines of below code.
+
+name: Java Maven CI/CD Pipeline*
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout source code
+      - name: Checkout code
+        uses: actions/checkout@v4
+      # Step 2: Set up Java
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+          cache: maven
+      # Step 3: Build and test using Maven
+      - name: Build and Test with Maven
+        run: mvn clean test
+
+  package-deploy:
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      # step 1: Test using Maven
+      - name: package the application
+        run: mvn clean package -DskipTests
+      # Step 2: Upload build artifact (Deploy stage example)
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: helloworldweb-artifact
+          path: target/*.war
+
+3) save the file, commit the changes to the local repository and push the changes to the GitHub remote repository. 
+
+4) Observe the workflow execution as the steps in the workflow implements the Maven build stages added with dependencies of Jobs. The 'package-deploy' job would run only on successful completion of the first job 'build-test'.
+
+
+
+
+
