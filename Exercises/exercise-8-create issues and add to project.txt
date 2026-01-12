@@ -1,0 +1,17 @@
+### Create issues in the repository:
+
+1) To create issue, go to the repository and click on issues tab.
+2) Click on New Issue --> Add a Title to the Issue.
+3) Select assignee from the right side panel.
+4) Select Label or create new Label. from 'feature', 'Bug', 'task', etc.
+
+5) create multiple issues, with below titles.
+
+	Issue title		Type (Label)
+
+	a) Setup CI pipeline		Feature
+	b) Fix Docker build issue	Bug
+	c) Add Terraform deployment	Feature
+	d) Improve README documentation	Task
+
+6) Open each issue --> Right sidebar --> Projects --> Select the project from dropdown, 'DevOps Feature Tracker'

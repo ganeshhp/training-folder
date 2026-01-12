@@ -1,0 +1,12 @@
+##Create a project and understand its structure.
+
+##Steps
+
+##Go to:
+
+1) Repositories 
+2) Select the repository to which we want the project to be linked 
+3) Click on Project and click on New Project
+4) Select from 'Board template' or 'Table' or 'Roadmap, so, to begin with select 'Board Template'.
+5) Give the Project Name. 'DevOps Feature Tracker'
+6) Deselect, 'Bulk Import Items'.

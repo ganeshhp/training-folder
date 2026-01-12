@@ -1,0 +1,28 @@
+## Learn custom fields and metadata tracking.
+
+## Steps
+
+1) In the Project, Click on Settings --> Add fields:
+
+	a) Status (Single Select)
+
+	   - Backlog
+	   - In Progress
+	   - Review
+	   - Done
+
+	b) Priority (Single Select)
+
+	   - P0
+	   - P1
+	   - P2
+
+	c) Component (Text)
+
+	   - CI
+	   - Docker
+	   - Terraform
+	   - Docs
+	   - Sprint (Number)
+
+2) Select an issue and in the right side panel, under the selected project, assign values to the fields to each issue.
