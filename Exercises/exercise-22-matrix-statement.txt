@@ -8,7 +8,7 @@ name: Java Maven CI/CD Pipeline (Matrix)
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-test-deploy:
