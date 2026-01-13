@@ -3,7 +3,7 @@
 ## Objective
 Understand the basic structure of a GitHub Actions workflow.
 
-1) create file workflow.yml
+1) create file workflow.yml at .github/workflows/
 
 name: Hello World
 
