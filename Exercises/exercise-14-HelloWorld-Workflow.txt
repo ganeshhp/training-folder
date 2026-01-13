@@ -9,7 +9,7 @@ name: Hello World
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   hello:
