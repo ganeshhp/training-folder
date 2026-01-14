@@ -1,0 +1,13 @@
+1) expose / browse application /service inside container using service resource
+
+   $ kubectl expose deployment webserver --port=80 --target-port=80 --type=NodePort --dry-run=client -o yaml > service.yml
+
+2) 1) validate replication controller and replica set resource differences.
+
+   $ kubectl describe <replication controller id>
+   $ kubectl describe <replica set id>
+
+2) make changes to deployment.yml file in image / replicas / label  and validate by deploying the resource.
+
+  $ kubectl create -f deployment.yml
+  $ kubectl apply -f deployment.yml

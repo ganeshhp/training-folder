@@ -1,0 +1,24 @@
+## Understand different views for different stakeholders.
+
+## create views to Create by,
+
+1) Board View – Engineering
+
+Group by: Status
+
+Sort by: Priority
+
+2) Table View – Management
+
+Columns:
+  a) Title
+  b) Status
+  c) Priority
+  d) Sprint
+  e) Assignee
+
+3️⃣ Filtered View – Bugs Only
+
+Filter:
+
+is:issue label:feature

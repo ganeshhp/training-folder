@@ -1,0 +1,10 @@
+## Track development work inside Projects.
+
+## Steps:
+
+1) In the repository select a branch and commit the changes to the code:
+
+2) Create PR after checking the auto-merge and conflict if any.
+
+3) Link PR to project and Link PR to the Issue:
+
