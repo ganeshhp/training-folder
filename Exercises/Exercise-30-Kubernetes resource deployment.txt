@@ -1,0 +1,59 @@
+## Exercise-30 -Resource deployment
+
+1) kubectl commands to deploy resources imperatively.
+
+  $ kubectl run webserver --image=httpd:latest 
+  # kubectl delete pod/webserver
+  $ kubectl run webserver --image=httpd:latest --dry-run=client -o yaml > pod.yaml
+
+  $ kubectl create -f pod.yaml
+  $ nano pod.yaml
+  #  make changes to Label, and image to httpd:2.4.57
+  $ kubectl apply -f pod.yaml
+
+2) create ReplicationController object with manifest file
+
+  a) create a file as rc.yml
+  b) copy the below contents,
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-apache-rc
+spec:
+  replicas: 5
+  selector:
+    app: hello-apache
+  template:
+    metadata:
+      labels:
+        app: hello-apache
+    spec:
+      containers:
+      - name: hello-apache-pod
+        image: httpd:latest
+        ports:
+        - containerPort: 80
+
+$ kubectl create -f rc.yml
+
+3) deploy deployment object imperatively...
+
+$ kubectl create deployment webserver-deploy --image=httpd:2.4.57 --replicas=2 --dry-run=client -o yaml > deployment.yml
+
+$ kubectl create -f deployment.yml 
+
+4) Explore  / edit manifest file
+  
+  $ kubectl edit deployment/webserver-deploy
+  
+5) deploy resources declaratively
+   $ kubectl create -f pod.yml
+   $ kubectl apply -f pod.yml
+
+   $ kubectl create -f deployment.yml
+   $ kubectl apply -f deployment.yml
+
+6) validate manifest changes
+   $ kubectl diff -f pod.yml
+
+

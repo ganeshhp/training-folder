@@ -1,0 +1,32 @@
+### query data from the infrastructure using 'output'
+
+## create the infrastructure.
+
+$ sudo terraform init
+
+$ sudo terraform apply
+
+## now we can get the details of the deployed infra by querying the infra.
+## Create a new file as output.tf and add below lines to the file.
+
+output "instance_id" {
+  description = "ID of the EC2 instance"
+  value       = aws_instance.app_server.id
+}
+
+output "instance_public_ip" {
+  description = "Public IP address of the EC2 instance"
+  value       = aws_instance.app_server.public_ip
+}
+
+## we keep all .tf (terraform config) files in the same folder.
+
+## run the terraform apply command and observe the output displayed towards the end of logs.
+## we can also query the output using the output command,
+
+$ terraform output
+
+
+## remove all infra
+
+$ terraform destroy

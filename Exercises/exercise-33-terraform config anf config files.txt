@@ -1,0 +1,81 @@
+### let's start using terraform commands ##
+
+$ terraform version
+
+### install AWSCLI on terraform machine ###
+
+$ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+$ unzip awscliv2.zip
+$ sudo ./aws/install
+
+##################
+
+### let's start with creating terraform environment
+
+$ mkdir terraform-aws
+
+$ cd terraform-aws
+
+$ nano main.tf
+
+### append below lines of code to the file
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  required_version = ">= 1.2.0"
+}
+
+### add providers to the config file.
+
+
+## now try running the init command.
+
+$ terraform init main.tf
+
+
+## once the providers are added we can define the resources that we want to create using the provider, in this case Docker as provider.
+## add below lines to the code.
+
+provider "aws" {
+  region  = "ap-south-1"
+}
+
+### Add resource statement
+
+resource "aws_instance" "app_server" {
+  ami           = "ami-02b8269d5e85954ef"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "AppServerInstance"
+  }
+}
+
+
+## Run Format and validate on the code.
+
+
+$ terraform fmt main.tf
+
+$ terraform validate main.tf
+
+## Now let's create plan.
+
+$ terraform plan
+
+## and now the apply command to provision the infrastructure.
+
+## run the plan and apply command one more time.
+
+$ terraform plan -out plan.tf
+
+$ terraform apply   .... or,
+
+$ terraform apply plan.tf
+

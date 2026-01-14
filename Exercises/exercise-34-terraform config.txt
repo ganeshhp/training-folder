@@ -1,0 +1,28 @@
+### we can validate the created infrastructure using terraform show command. First create it with apply command.
+
+$ terraform apply
+
+### terraform creates a state file and we can view the created infra in the state file using show command.
+
+$ terraform show
+
+### validate the terraform state file. this file gets generated when we create the infrastructure. When the infra is removed so the .tfstate file also gets updated with the state of infra.
+
+$ terraform state list
+
+### making changes to the infra.
+## change the port number in the main.tf file for the container.
+
+resource "aws_instance" "app_server" {
+   ami                    = "ami-830c94e3"
+   instance_type          = "t2.micro"
+  vpc_security_group_ids = ["sg-0077..."]
+  subnet_id              = "subnet-923a..."
+ }
+
+### now to apply this change to the existing infra, we can run the terraform apply command on the updated main.tf file. 
+### Observe the changes that are implemented with apply command.
+
+$ terraform apply
+
+### validate the .tfstate file after changes are implemented.

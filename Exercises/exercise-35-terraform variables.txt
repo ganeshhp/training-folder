@@ -1,0 +1,49 @@
+## try changing the ami id and try running the terraform apply command.
+
+
+ resource "aws_instance" "app_server" {
+   ami           = "ami-08d70e59c07c61a3a"
+   instance_type = "t2.micro"
+ }
+
+
+### removing infrastructure
+### we can use the terraform destroy command to remove the deployed infra.
+
+$ terraform destroy
+
+### observe the changes and prompted infra details before the proceeding.
+
+### using variables
+### let's update the main.tf file with adding the variable information.
+### Create a new file called variables.tf with a block defining a new container_name variable.
+
+$ nano variables.tf
+
+variable "instance_name" {
+  description = "Value of the Name tag for the EC2 instance"
+  type        = string
+  default     = "AppServerInstance"
+}
+
+### update the main.tf file by adding the variable reference and removing hard-coded container name.
+
+ resource "aws_instance" "app_server" {
+   ami           = "ami-08d70e59c07c61a3a"
+   instance_type = "t2.micro"
+
+   tags = {
+     Name = var.instance_name
+   }
+ }
+
+
+### apply the changes
+
+$ terraform apply
+
+### the variables value can also be supplies at the commandline using -var option.
+
+$ terraform apply -var "instance_name=new_server_name"
+
+

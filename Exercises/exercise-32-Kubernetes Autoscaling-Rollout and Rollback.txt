@@ -1,0 +1,38 @@
+#Scale up / down replicas
+$ kubectl scale deployment webserver --replicas=4
+
+#Horizontal POD Autoscaler (HPA):
+#To AutoScale existing deployment object in cluster.
+
+$ kubectl autoscale deployment/my-deployment --min=2 --max=10
+
+$ kubectl autoscale deployment/my-deployment --max=10 --cpu-percent=80
+
+########## Rollout and RollBack ############
+
+1) Rollout deployment
+
+   # deploy a deployment resource.
+   # check the status and manage deployment
+   $ kubectl rollout status deployment <deployment-name>
+
+   $ kubectl rollout pause deployment <deployment-name>
+   $ kubectl rollout resume deployment <deployment-name>
+
+   $ kubectl rollout history deployment <deployment-name> 
+2) Validate annotation and revisions
+
+   check annotations version
+
+   $ kubectl describe deployment <deployment-name>
+3) Rollback deployment
+
+   $ kubectl rollout history deployment <deployment-name>
+
+   # rollback to last deployment
+
+   $ kubectl rollout undo deployment <deployment-name> 
+
+   # rollback to particular version
+
+   $ kubectl rollout undo deployment <deployment-name> --to-revision=2  

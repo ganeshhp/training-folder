@@ -1,0 +1,17 @@
+Exercise -3
+
+1) Create custom namespace
+
+  $ kubectl create namespace mynamespace
+
+2) Deploy multiservice application in custom namespace
+
+  $ kubectl create deployment webapp --image=httpd:latest --replicas=2 --namespace=mynamespace
+
+3) Expose application to external users
+
+   $ kubectl expose deployment webapp --port=80 --targetport=80 --type=NodePort --namespace=mynamespace
+
+4) Assign / modify labels and validate service discovery
+
+   $ kubectl edit deployment webapp --namespace=mynamespace 
