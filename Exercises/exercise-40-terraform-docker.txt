@@ -1,0 +1,57 @@
+
+### create main.tf file
+
+terraform {
+  required_providers {
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "~> 3.0.1"
+    }
+  }
+}
+
+provider "docker" {}
+
+resource "docker_image" "nginx" {
+  name         = var.container_image
+  keep_locally = false
+}
+
+resource "docker_container" "nginx" {
+  image = docker_image.nginx.image_id
+  name  = var.container_name
+  hostname = "learn-terraform-docker"
+  ports {
+    internal = 80
+    external = 8080
+  }
+}
+
+## create output.tf file
+
+output "container_id" {
+  description = "ID of the Docker container"
+  value       = docker_container.nginx.id
+}
+
+output "image_id" {
+  description = "ID of the Docker image"
+  value       = docker_image.nginx.id
+}
+
+
+## create variables.tf file
+variable "container_name" {
+  description = "Value of the name for the Docker container"
+  type        = string
+  default     = "webserver"
+}
+
+variable "container_image" {
+  description = "webserver container image"
+  type        = string
+  default     = "httpd:2.4" 
+
+}
+
+
