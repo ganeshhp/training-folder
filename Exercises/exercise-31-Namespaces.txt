@@ -10,7 +10,7 @@ Exercise -3
 
 3) Expose application to external users
 
-   $ kubectl expose deployment webapp --port=80 --targetport=80 --type=NodePort --namespace=mynamespace
+   $ kubectl expose deployment webapp --port=80 --target-port=80 --type=NodePort --namespace=mynamespace
 
 4) Assign / modify labels and validate service discovery
 
